@@ -33,16 +33,18 @@ class BinaryGap {
         var isCounting = false
 
         for (char in binaryString) {
-            if (char == '1' && isCounting) {
-                if (currentBinaryGap > longestBinaryGap) {
-                    longestBinaryGap = currentBinaryGap
+            when {
+                char == '1' && isCounting -> {
+                    if (currentBinaryGap > longestBinaryGap) {
+                        longestBinaryGap = currentBinaryGap
+                    }
+                    currentBinaryGap = 0
                 }
-                currentBinaryGap = 0
+
+                char == '1' -> isCounting = true
+
+                char == '0' && isCounting -> currentBinaryGap++
             }
-
-            else if (char == '1') isCounting = true
-
-            else if (char == '0' && isCounting) currentBinaryGap++
         }
 
         return longestBinaryGap
