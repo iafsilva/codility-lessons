@@ -27,13 +27,16 @@ package lesson1
 class BinaryGap {
 
     fun solution(n: Int): Int {
-        val binaryString = Integer.toBinaryString(n)
         var longestBinaryGap = 0
         var currentBinaryGap = 0
         var isCounting = false
 
+        // Get binary representation
+        val binaryString = Integer.toBinaryString(n)
+
         for (char in binaryString) {
             when {
+                // If we were already counting means binary gap ended
                 char == '1' && isCounting -> {
                     if (currentBinaryGap > longestBinaryGap) {
                         longestBinaryGap = currentBinaryGap
@@ -41,8 +44,10 @@ class BinaryGap {
                     currentBinaryGap = 0
                 }
 
+                // When finding a 1 start counting
                 char == '1' -> isCounting = true
 
+                // When counting -> increment our binary gap
                 char == '0' && isCounting -> currentBinaryGap++
             }
         }
