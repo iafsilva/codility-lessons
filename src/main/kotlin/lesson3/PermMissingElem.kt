@@ -28,7 +28,7 @@ package lesson3
  * - the elements of A are all distinct;
  * - each element of array A is an integer within the range [1..(N + 1)].
  */
-class MissingPermElem {
+class PermMissingElem {
 
     fun solution(a: IntArray): Int {
         // First edge case: missing is the first nr
